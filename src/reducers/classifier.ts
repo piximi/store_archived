@@ -64,13 +64,11 @@ export const classifierReducer = createReducer(initialState, {
     state.categories.push(category);
   },
   [createClassifierAction.toString()]: (state, action) => {
-    const { name } = action.payload;
+    const { name,  categories, images} = action.payload;
 
-    state.categories = [];
+    categories.map((category: Category) => state.categories.push(category));
 
-    state.categories.push(unknownCategory);
-
-    state.images = [];
+    images.map((image: Image) => state.images.push(image));
 
     state.name = name;
   },

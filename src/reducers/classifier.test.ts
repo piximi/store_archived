@@ -112,6 +112,15 @@ describe('classifierReducer', () => {
     const payload = {
       name: 'example',
       categories: [
+        {
+          description: 'Unknown',
+          identifier: '00000000-0000-0000-0000-000000000000',
+          index: 0,
+          visualization: {
+            color: '#F8F8F8',
+            visible: true
+          }
+        },
         {           
           description: "1",
           identifier: "18be6295-dade-445e-a13f-e9f2268ac8e6",

@@ -69,3 +69,6 @@ export const updateImageContrastAction = createAction(
 export const updateImageVisibilityAction = createAction(
   'update-image-visibility'
 );
+export const updateImagesPartitionAction = createAction(
+  'update-images-partition'
+);

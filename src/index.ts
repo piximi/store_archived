@@ -15,7 +15,8 @@ import {
   updateCategoryVisibilityAction,
   updateClassifierNameAction,
   updateImageCategoryAction,
-  updateImageVisibilityAction
+  updateImageVisibilityAction,
+  updateImagesPartitionAction
 } from "./actions";
 
 import {
@@ -42,5 +43,6 @@ export {
   updateImageBrightnessAction,
   updateImageCategoryAction,
   updateImageContrastAction,
-  updateImageVisibilityAction
+  updateImageVisibilityAction,
+  updateImagesPartitionAction
 }

@@ -19,7 +19,8 @@ import {
   updateImageBrightnessAction,
   updateImageCategoryAction,
   updateImageContrastAction,
-  updateImageVisibilityAction
+  updateImageVisibilityAction,
+  updateImagesPartitionAction
 } from "../actions";
 
 import {
@@ -202,5 +203,13 @@ export const classifierReducer = createReducer(initialState, {
     const image: Image = state.images[index];
 
     image.visualization.visible = visible;
+  },
+  [updateImagesPartitionAction.toString()]: (state, action) => {
+    const { partitions } = action.payload;
+
+    state.images.forEach( (image: Image) => {
+      image.partition = partitions[0];
+      partitions.splice(0, 1);
+    })
   }
 });

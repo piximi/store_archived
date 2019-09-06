@@ -18,6 +18,7 @@ import {
   updateClassifierNameAction,
   updateImageBrightnessAction,
   updateImageCategoryAction,
+  updateImagesCategoryAction,
   updateImageContrastAction,
   updateImageVisibilityAction,
   updateImagesPartitionAction
@@ -185,6 +186,15 @@ export const classifierReducer = createReducer(initialState, {
     const image: Image = state.images[index];
 
     image.categoryIdentifier = categoryIdentifier;
+  },
+  [updateImagesCategoryAction.toString()]: (state, action) => {
+    const { identifiers, categoryIdentifier } = action.payload;
+
+    identifiers.forEach( (identifier: string) => {
+      const index: number = findImageIndex(state.images, identifier);
+      const image: Image = state.images[index];
+      image.categoryIdentifier = categoryIdentifier;
+    });
   },
   [updateImageContrastAction.toString()]: (state, action) => {
     const { identifier, contrast } = action.payload;

@@ -15,6 +15,7 @@ import {
   updateCategoryVisibilityAction,
   updateClassifierNameAction,
   updateImageCategoryAction,
+  updateImagesCategoryAction,
   updateImageVisibilityAction,
   updateImagesPartitionAction
 } from "./classifier";
@@ -36,6 +37,7 @@ export {
   updateCategoryVisibilityAction,
   updateClassifierNameAction,
   updateImageCategoryAction,
+  updateImagesCategoryAction,
   updateImageVisibilityAction,
   updateImagesPartitionAction
 }

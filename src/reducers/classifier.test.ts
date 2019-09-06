@@ -14,6 +14,7 @@ import {
   updateClassifierNameAction,
   updateImageBrightnessAction,
   updateImageCategoryAction,
+  updateImagesCategoryAction,
   updateImageContrastAction,
   updateImageVisibilityAction,
   updateImagesPartitionAction
@@ -1163,6 +1164,155 @@ describe('classifierReducer', () => {
           checksum: '',
           data: '',
           identifier: '22222222-2222-2222-2222-22222222222',
+          partition: Partition.Training,
+          scores: [],
+          visualization: {
+            brightness: 0,
+            contrast: 0,
+            visible: true,
+            visibleChannels: []
+          }
+        }
+      ],
+      name: 'Untitled classifier'
+    };
+
+    expect(reducer).toEqual(expected);
+  });
+
+  it('updateImagesCategoryAction', () => {
+    const state: Classifier = {
+      categories: [
+        {
+          description: 'Unknown',
+          identifier: '00000000-0000-0000-0000-000000000000',
+          index: 0,
+          visualization: {
+            color: 'rgb(233, 165, 177)',
+            visible: true
+          }
+        },
+        {
+          description: 'example',
+          identifier: '11111111-1111-1111-1111-11111111111',
+          index: 1,
+          visualization: {
+            color: '#FFFFFF',
+            visible: true
+          }
+        }
+      ],
+      images: [
+        {
+          categoryIdentifier: '00000000-0000-0000-0000-000000000000',
+          checksum: '',
+          data: '',
+          identifier: '22222222-2222-2222-1111-22222222222',
+          partition: Partition.Training,
+          scores: [],
+          visualization: {
+            brightness: 0,
+            contrast: 0,
+            visible: true,
+            visibleChannels: []
+          }
+        },
+        {
+          categoryIdentifier: '00000000-0000-0000-0000-000000000000',
+          checksum: '',
+          data: '',
+          identifier: '22222222-2222-2222-2222-22222222222',
+          partition: Partition.Training,
+          scores: [],
+          visualization: {
+            brightness: 0,
+            contrast: 0,
+            visible: true,
+            visibleChannels: []
+          }
+        },
+        {
+          categoryIdentifier: '00000000-0000-0000-0000-000000000000',
+          checksum: '',
+          data: '',
+          identifier: '22222222-2222-2222-3333-22222222222',
+          partition: Partition.Training,
+          scores: [],
+          visualization: {
+            brightness: 0,
+            contrast: 0,
+            visible: true,
+            visibleChannels: []
+          }
+        }
+      ],
+      name: 'Untitled classifier'
+    };
+
+    const payload = {
+      identifiers: ['22222222-2222-2222-1111-22222222222', '22222222-2222-2222-2222-22222222222', '22222222-2222-2222-3333-22222222222'],
+      categoryIdentifier: '11111111-1111-1111-1111-11111111111'
+    };
+
+    const action = updateImagesCategoryAction(payload);
+
+    const reducer = classifierReducer(state, action);
+
+    const expected: Classifier = {
+      categories: [
+        {
+          description: 'Unknown',
+          identifier: '00000000-0000-0000-0000-000000000000',
+          index: 0,
+          visualization: {
+            color: 'rgb(233, 165, 177)',
+            visible: true
+          }
+        },
+        {
+          description: 'example',
+          identifier: '11111111-1111-1111-1111-11111111111',
+          index: 1,
+          visualization: {
+            color: '#FFFFFF',
+            visible: true
+          }
+        }
+      ],
+      images: [
+        {
+          categoryIdentifier: '11111111-1111-1111-1111-11111111111',
+          checksum: '',
+          data: '',
+          identifier: '22222222-2222-2222-1111-22222222222',
+          partition: Partition.Training,
+          scores: [],
+          visualization: {
+            brightness: 0,
+            contrast: 0,
+            visible: true,
+            visibleChannels: []
+          }
+        },
+        {
+          categoryIdentifier: '11111111-1111-1111-1111-11111111111',
+          checksum: '',
+          data: '',
+          identifier: '22222222-2222-2222-2222-22222222222',
+          partition: Partition.Training,
+          scores: [],
+          visualization: {
+            brightness: 0,
+            contrast: 0,
+            visible: true,
+            visibleChannels: []
+          }
+        },
+        {
+          categoryIdentifier: '11111111-1111-1111-1111-11111111111',
+          checksum: '',
+          data: '',
+          identifier: '22222222-2222-2222-3333-22222222222',
           partition: Partition.Training,
           scores: [],
           visualization: {

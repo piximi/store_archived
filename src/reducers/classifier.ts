@@ -205,13 +205,15 @@ export const classifierReducer = createReducer(initialState, {
     image.visualization.contrast = contrast;
   },
   [updateImageVisibilityAction.toString()]: (state, action) => {
-    const { identifier, visible } = action.payload;
+    const { identifiers, visible } = action.payload;
 
-    const index: number = findImageIndex(state.images, identifier);
+    for (let i = 0; i < identifiers.length; i++) {
+      const index: number = findImageIndex(state.images, identifiers[i]);
 
-    const image: Image = state.images[index];
+      const image: Image = state.images[index];
 
-    image.visualization.visible = visible;
+      image.visualization.visible = visible;
+    }
   },
   [updateImagesPartitionAction.toString()]: (state, action) => {
     const { partitions } = action.payload;

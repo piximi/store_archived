@@ -1500,7 +1500,7 @@ describe('classifierReducer', () => {
     };
 
     const payload = {
-      identifier: '11111111-1111-1111-1111-11111111111',
+      identifiers: ['11111111-1111-1111-1111-11111111111'],
       visible: false
     };
 

@@ -6,8 +6,7 @@ import {
 import thunk from 'redux-thunk'
 import autoMergeLevel2 from "redux-persist/es/stateReconciler/autoMergeLevel2";
 import localforage from "localforage"
-import {Classifier} from "@piximi/types";
-
+import axios from 'axios';
 import {
   AnyAction,
   configureStore,
@@ -52,5 +51,25 @@ const options = {
 };
 
 export const store: EnhancedStore<any, AnyAction> = configureStore(options);
+
+const fetchExample = (name: string) => {
+  return axios
+    .get('https://storage.piximi.app/examples/' + name + '.piximi')
+    .then((result: any) => {
+      return {
+        ...preloadedState,
+        categories: result.data.categories,
+        images: result.data.images
+      }
+    })
+    .catch(function(error: Error) {
+      alert(error);
+    });
+};
+
+export const test: EnhancedStore<any, AnyAction> = configureStore({
+  ...options,
+  preloadedState: fetchExample('mnist')
+});
 
 export const persistor = persistStore(store);

@@ -10,12 +10,10 @@ export const createCategoryAction = createAction(
 
 export const createClassifierAction = createAction(
   'create-classifier',
-  action => {
-    return (name: string) => {
-      return { name: name };
-    };
+  (name: string) => {
+    return { name: name };
   }
-);
+)();
 
 export const createImageAction = createAction(
   'create-image',
@@ -33,7 +31,7 @@ export const createImagesAction = createAction(
 
 export const createImagesScoreAction = createAction(
   'create-images-score',
-  (identifiers: Array<string>, scores: Array<Score>) => {
+  (identifiers: Array<string>, scores: Array<Array<Score>>) => {
     return { identifiers: identifiers, scores: scores };
   }
 )();
@@ -75,7 +73,7 @@ export const updateCategoryColorAction = createAction(
 
 export const updateCategoryDescriptionAction = createAction(
   'update-category-description',
-  (identifier: string, description: string) => {
+  (description: string, identifier: string) => {
     return { identifier: identifier, description: description };
   }
 )();
@@ -117,8 +115,8 @@ export const updateImageContrastAction = createAction(
 
 export const updateImageVisibilityAction = createAction(
   'update-image-visibility',
-  (category: Category) => {
-    return category;
+  (identifier: string, visible: boolean) => {
+    return { identifier: identifier, visible: visible };
   }
 )();
 

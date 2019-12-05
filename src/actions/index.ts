@@ -17,5 +17,6 @@ export {
   updateImageContrastAction,
   updateImagesCategoryAction,
   updateImagesPartitionAction,
+  updateImagesVisibilityAction,
   updateImageVisibilityAction
 } from './classifier';

@@ -18,12 +18,9 @@ import {
   updateImagesCategoryAction,
   updateImageVisibilityAction,
   updateImagesPartitionAction
-} from "./actions";
+} from './actions';
 
-import {
-  persistor,
-  store
-} from "./store";
+import { persistor, store } from './store/store';
 
 export {
   createCategoryAction,
@@ -47,4 +44,4 @@ export {
   updateImageContrastAction,
   updateImageVisibilityAction,
   updateImagesPartitionAction
-}
+};

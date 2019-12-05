@@ -1,10 +1,7 @@
-import {AnyAction, combineReducers, Reducer} from 'redux';
+import { combineReducers, Reducer } from 'redux';
 
-import {
-  classifierReducer
-} from './classifier';
-import {Classifier} from "@piximi/types";
+import { classifierReducer } from './classifier';
 
-export const reducer: Reducer<any, AnyAction> = combineReducers({
-  classifier: classifierReducer,
+export const reducer: Reducer = combineReducers({
+  classifier: classifierReducer
 });

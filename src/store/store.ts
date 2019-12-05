@@ -1,11 +1,8 @@
-import logger from 'redux-logger'
-import {
-  persistReducer,
-  persistStore
-} from 'redux-persist'
-import thunk from 'redux-thunk'
-import autoMergeLevel2 from "redux-persist/es/stateReconciler/autoMergeLevel2";
-import localforage from "localforage"
+import logger from 'redux-logger';
+import { persistReducer, persistStore } from 'redux-persist';
+import thunk from 'redux-thunk';
+import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2';
+import localforage from 'localforage';
 import axios from 'axios';
 import {
   AnyAction,
@@ -13,19 +10,13 @@ import {
   EnhancedStore,
   Middleware,
   StoreEnhancer
-} from "redux-starter-kit";
+} from 'redux-starter-kit';
 
-import {
-  reducer
-} from "./reducers";
-import {Reducer} from "react";
+import { reducer } from '../reducers';
 
 const enhancers: StoreEnhancer[] = [];
 
-const middleware: Middleware<{}, any>[] = [
-  logger,
-  thunk
-];
+const middleware: Middleware<{}, any>[] = [logger, thunk];
 
 const preloadedState = {};
 
@@ -47,7 +38,7 @@ const options = {
   enhancers: enhancers,
   middleware: middleware,
   preloadedState: preloadedState,
-  reducer: persistedReducer,
+  reducer: persistedReducer
 };
 
 export const store: EnhancedStore<any, AnyAction> = configureStore(options);
@@ -60,7 +51,7 @@ const fetchExample = (name: string) => {
         ...preloadedState,
         categories: result.data.categories,
         images: result.data.images
-      }
+      };
     })
     .catch(function(error: Error) {
       alert(error);

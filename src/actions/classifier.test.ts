@@ -1,5 +1,5 @@
-import { createCategoryAction } from './classifier';
-import { Category, Classifier, Image, Partition, Score } from '@piximi/types';
+import { Category } from '@piximi/types';
+import * as actions from './classifier';
 
 const unknownCategory: Category = {
   description: 'Unknown',
@@ -11,28 +11,18 @@ const unknownCategory: Category = {
   }
 };
 
-describe('createCategoryAction', () => {
-  it('creates a category', () => {
-    // const createCategory = (category: Category) => {
-    //   return action('create-category', category)
-    // };
+it('createCategoryAction', () => {
+  const category: Category = {
+    description: 'example',
+    identifier: '11111111-1111-1111-1111-11111111111',
+    index: 1,
+    visualization: {
+      color: '#FFFFFF',
+      visible: true
+    }
+  };
 
-    const category: Category = {
-      description: 'example',
-      identifier: '11111111-1111-1111-1111-11111111111',
-      index: 1,
-      visualization: {
-        color: '#FFFFFF',
-        visible: true
-      }
-    };
+  const action = actions.createCategoryAction(category);
 
-    const payload = {
-      category: category
-    };
-
-    const increment = createAction('counter/increment');
-
-    expect(increment(1)).toEqual([]);
-  });
+  expect(action.payload).toEqual({ category: category });
 });

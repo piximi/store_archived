@@ -51,8 +51,6 @@ const unknownCategory: Category = {
   }
 };
 
-initialState.categories.push(unknownCategory);
-
 export const classifierReducer = createReducer(initialState, {
   [createCategoryAction.toString()]: (state, action) => {
     const { category } = action.payload;

@@ -21,6 +21,7 @@ import {
 } from '../actions';
 import { classifierReducer } from './classifier';
 import { Category, Classifier, Image, Partition, Score } from '@piximi/types';
+import { store } from '../store';
 
 const unknownCategory: Category = {
   description: 'Unknown',

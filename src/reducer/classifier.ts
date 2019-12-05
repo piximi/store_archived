@@ -1,6 +1,5 @@
 import { Category, Classifier, Image } from '@piximi/types';
-import { createReducer, getType } from 'typesafe-actions';
-import { ActionType } from 'typesafe-actions';
+import { createReducer } from 'typesafe-actions';
 import {
   createCategoryAction,
   createClassifierAction,
@@ -23,31 +22,6 @@ import {
   updateImagesVisibilityAction,
   updateImageVisibilityAction
 } from '../actions';
-
-const actions = [
-  createCategoryAction,
-  createClassifierAction,
-  createImageAction,
-  createImagesAction,
-  createImagesScoreAction,
-  deleteCategoryAction,
-  deleteImageAction,
-  openClassifierAction,
-  toggleCategoryVisibilityAction,
-  updateCategoryColorAction,
-  updateCategoryDescriptionAction,
-  updateCategoryVisibilityAction,
-  updateClassifierNameAction,
-  updateImageBrightnessAction,
-  updateImageCategoryAction,
-  updateImageContrastAction,
-  updateImagesCategoryAction,
-  updateImagesPartitionAction,
-  updateImagesVisibilityAction,
-  updateImageVisibilityAction
-];
-
-export type ClassifierAction = ActionType<typeof actions>;
 
 const findCategoryIndex = (
   categories: Category[],
@@ -78,23 +52,13 @@ const unknownCategory: Category = {
   }
 };
 
-import { StateType } from 'typesafe-actions';
-
-export type RootAction = ActionType<typeof actions>;
-
-declare module 'typesafe-actions' {
-  interface Types {
-    RootAction: RootAction;
-  }
-}
-
-const classifierReducer = createReducer(initialState)
-  .handleAction(actions.createCategoryAction, (state, action) => {
+export const classifierReducer = createReducer(initialState)
+  .handleAction(createCategoryAction, (state: any, action: any) => {
     const { category } = action.payload;
 
     state.categories.push(category);
   })
-  .handleAction(actions.createClassifierAction, (state, action) => {
+  .handleAction(createClassifierAction, (state: any, action: any) => {
     const { name } = action.payload;
 
     state.categories = [];
@@ -105,7 +69,7 @@ const classifierReducer = createReducer(initialState)
 
     state.name = name;
   })
-  .handleAction(actions.openClassifierAction, (state, action) => {
+  .handleAction(openClassifierAction, (state: any, action: any) => {
     const { classifier } = action.payload;
 
     state.categories = classifier.categories;
@@ -114,17 +78,17 @@ const classifierReducer = createReducer(initialState)
 
     state.name = classifier.name;
   })
-  .handleAction(actions.createImageAction, (state, action) => {
+  .handleAction(createImageAction, (state: any, action: any) => {
     const { image } = action.payload;
 
     state.images.push(image);
   })
-  .handleAction(actions.createImagesAction, (state, action) => {
+  .handleAction(createImagesAction, (state: any, action: any) => {
     const { images } = action.payload;
 
     images.forEach((image: Image) => state.images.push(image));
   })
-  .handleAction(actions.createImagesScoreAction, (state, action) => {
+  .handleAction(createImagesScoreAction, (state: any, action: any) => {
     const { identifiers, scores } = action.payload;
     for (let i = 0; i < identifiers.length; i++) {
       const index: number = findImageIndex(state.images, identifiers[i]);
@@ -132,7 +96,7 @@ const classifierReducer = createReducer(initialState)
       image.scores = scores[i];
     }
   })
-  .handleAction(actions.deleteCategoryAction, (state, action) => {
+  .handleAction(deleteCategoryAction, (state: any, action: any) => {
     const { identifier } = action.payload;
 
     state.categories = state.categories.filter((category: Category) => {
@@ -147,14 +111,14 @@ const classifierReducer = createReducer(initialState)
       return image;
     });
   })
-  .handleAction(actions.deleteImageAction, (state, action) => {
+  .handleAction(deleteImageAction, (state: any, action: any) => {
     const { identifier } = action.payload;
 
     state.images = state.images.filter(
       (image: Image) => image.identifier !== identifier
     );
   })
-  .handleAction(actions.toggleCategoryVisibilityAction, (state, action) => {
+  .handleAction(toggleCategoryVisibilityAction, (state: any, action: any) => {
     const { identifier } = action.payload;
 
     const index: number = findCategoryIndex(state.categories, identifier);
@@ -163,7 +127,7 @@ const classifierReducer = createReducer(initialState)
 
     category.visualization.visible = !category.visualization.visible;
   })
-  .handleAction(actions.updateCategoryColorAction, (state, action) => {
+  .handleAction(updateCategoryColorAction, (state: any, action: any) => {
     const { identifier, color } = action.payload;
 
     const index: number = findCategoryIndex(state.categories, identifier);
@@ -172,7 +136,7 @@ const classifierReducer = createReducer(initialState)
 
     category.visualization.color = color;
   })
-  .handleAction(actions.updateCategoryDescriptionAction, (state, action) => {
+  .handleAction(updateCategoryDescriptionAction, (state: any, action: any) => {
     const { identifier, description } = action.payload;
 
     const index: number = findCategoryIndex(state.categories, identifier);
@@ -181,7 +145,7 @@ const classifierReducer = createReducer(initialState)
 
     category.description = description;
   })
-  .handleAction(actions.updateCategoryVisibilityAction, (state, action) => {
+  .handleAction(updateCategoryVisibilityAction, (state: any, action: any) => {
     const { identifier, visible } = action.payload;
 
     const index: number = findCategoryIndex(state.categories, identifier);
@@ -190,12 +154,12 @@ const classifierReducer = createReducer(initialState)
 
     category.visualization.visible = visible;
   })
-  .handleAction(actions.updateClassifierNameAction, (state, action) => {
+  .handleAction(updateClassifierNameAction, (state: any, action: any) => {
     const { name } = action.payload;
 
     state.name = name;
   })
-  .handleAction(actions.updateImageBrightnessAction, (state, action) => {
+  .handleAction(updateImageBrightnessAction, (state: any, action: any) => {
     const { identifier, brightness } = action.payload;
 
     const index: number = findImageIndex(state.images, identifier);
@@ -204,7 +168,7 @@ const classifierReducer = createReducer(initialState)
 
     image.visualization.brightness = brightness;
   })
-  .handleAction(actions.updateImageCategoryAction, (state, action) => {
+  .handleAction(updateImageCategoryAction, (state: any, action: any) => {
     const { identifier, categoryIdentifier } = action.payload;
 
     const index: number = findImageIndex(state.images, identifier);
@@ -213,7 +177,7 @@ const classifierReducer = createReducer(initialState)
 
     image.categoryIdentifier = categoryIdentifier;
   })
-  .handleAction(actions.updateImagesCategoryAction, (state, action) => {
+  .handleAction(updateImagesCategoryAction, (state: any, action: any) => {
     const { identifiers, categoryIdentifier } = action.payload;
 
     identifiers.forEach((identifier: string) => {
@@ -222,7 +186,7 @@ const classifierReducer = createReducer(initialState)
       image.categoryIdentifier = categoryIdentifier;
     });
   })
-  .handleAction(actions.updateImageContrastAction, (state, action) => {
+  .handleAction(updateImageContrastAction, (state: any, action: any) => {
     const { identifier, contrast } = action.payload;
 
     const index: number = findImageIndex(state.images, identifier);
@@ -231,7 +195,7 @@ const classifierReducer = createReducer(initialState)
 
     image.visualization.contrast = contrast;
   })
-  .handleAction(actions.updateImageVisibilityAction, (state, action) => {
+  .handleAction(updateImageVisibilityAction, (state: any, action: any) => {
     const { identifier, visible } = action.payload;
 
     const index: number = findImageIndex(state.images, identifier);
@@ -240,7 +204,7 @@ const classifierReducer = createReducer(initialState)
 
     image.visualization.visible = visible;
   })
-  .handleAction(actions.updateImagesPartitionAction, (state, action) => {
+  .handleAction(updateImagesPartitionAction, (state: any, action: any) => {
     const { partitions } = action.payload;
 
     state.images.forEach((image: Image) => {
@@ -248,7 +212,7 @@ const classifierReducer = createReducer(initialState)
       partitions.splice(0, 1);
     });
   })
-  .handleAction(actions.updateImagesVisibilityAction, (state, action) => {
+  .handleAction(updateImagesVisibilityAction, (state: any, action: any) => {
     const { identifiers, visible } = action.payload;
 
     for (let i = 0; i < identifiers.length; i++) {

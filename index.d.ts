@@ -1,4 +1,4 @@
-import * as actions from './src/actions';
+import * as actions from './src/actions/classifier';
 import { StateType, ActionType } from 'typesafe-actions';
 
 export type RootAction = ActionType<typeof actions>;

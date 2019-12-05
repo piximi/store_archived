@@ -19,25 +19,23 @@ import {
   updateImageVisibilityAction,
   updateImagesPartitionAction
 } from '../actions';
-
 import { classifierReducer } from './classifier';
-
 import { Category, Classifier, Image, Partition, Score } from '@piximi/types';
+
+const unknownCategory: Category = {
+  description: 'Unknown',
+  identifier: '00000000-0000-0000-0000-000000000000',
+  index: 0,
+  visualization: {
+    color: 'rgb(233, 165, 177)',
+    visible: true
+  }
+};
 
 describe('classifierReducer', () => {
   it('createCategoryAction', () => {
     const state: Classifier = {
-      categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        }
-      ],
+      categories: [unknownCategory],
       images: [],
       name: 'Untitled classifier'
     };
@@ -62,15 +60,7 @@ describe('classifierReducer', () => {
 
     const expected: Classifier = {
       categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        },
+        unknownCategory,
         {
           description: 'example',
           identifier: '11111111-1111-1111-1111-11111111111',
@@ -90,17 +80,7 @@ describe('classifierReducer', () => {
 
   it('createClassifierAction', () => {
     const state: Classifier = {
-      categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        }
-      ],
+      categories: [unknownCategory],
       images: [],
       name: 'Untitled classifier'
     };
@@ -114,17 +94,7 @@ describe('classifierReducer', () => {
     const reducer = classifierReducer(state, action);
 
     const expected: Classifier = {
-      categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        }
-      ],
+      categories: [unknownCategory],
       images: [],
       name: 'example'
     };
@@ -134,32 +104,14 @@ describe('classifierReducer', () => {
 
   it('openClassifierAction', () => {
     const state: Classifier = {
-      categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        }
-      ],
+      categories: [unknownCategory],
       images: [],
       name: 'Untitled classifier'
     };
 
     const payload: Classifier = {
       categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        },
+        unknownCategory,
         {
           description: '1',
           identifier: '18be6295-dade-445e-a13f-e9f2268ac8e6',
@@ -204,15 +156,7 @@ describe('classifierReducer', () => {
 
     const expected: Classifier = {
       categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        },
+        unknownCategory,
         {
           description: '1',
           identifier: '18be6295-dade-445e-a13f-e9f2268ac8e6',
@@ -256,17 +200,7 @@ describe('classifierReducer', () => {
 
   it('createImageAction', () => {
     const state: Classifier = {
-      categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        }
-      ],
+      categories: [unknownCategory],
       images: [],
       name: 'Untitled classifier'
     };
@@ -296,17 +230,7 @@ describe('classifierReducer', () => {
     const reducer = classifierReducer(state, action);
 
     const expected: Classifier = {
-      categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        }
-      ],
+      categories: [unknownCategory],
       images: [
         {
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
@@ -331,17 +255,7 @@ describe('classifierReducer', () => {
 
   it('createImagesAction', () => {
     const state: Classifier = {
-      categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        }
-      ],
+      categories: [unknownCategory],
       images: [
         {
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
@@ -401,17 +315,7 @@ describe('classifierReducer', () => {
     const reducer = classifierReducer(state, action);
 
     const expected: Classifier = {
-      categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        }
-      ],
+      categories: [unknownCategory],
       images: [
         {
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
@@ -465,15 +369,7 @@ describe('classifierReducer', () => {
   it('createImageScoreAction', () => {
     const state: Classifier = {
       categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        },
+        unknownCategory,
         {
           description: 'example',
           identifier: '11111111-1111-1111-1111-11111111111',
@@ -560,15 +456,7 @@ describe('classifierReducer', () => {
 
     const expected: Classifier = {
       categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        },
+        unknownCategory,
         {
           description: 'example',
           identifier: '11111111-1111-1111-1111-11111111111',
@@ -642,15 +530,7 @@ describe('classifierReducer', () => {
   it('deleteCategoryAction', () => {
     const state: Classifier = {
       categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: '#FFFFFF',
-            visible: true
-          }
-        },
+        unknownCategory,
         {
           description: 'example',
           identifier: '11111111-1111-1111-1111-11111111111',
@@ -689,17 +569,7 @@ describe('classifierReducer', () => {
     const reducer = classifierReducer(state, action);
 
     const expected: Classifier = {
-      categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: '#FFFFFF',
-            visible: true
-          }
-        }
-      ],
+      categories: [unknownCategory],
       images: [
         {
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
@@ -724,17 +594,7 @@ describe('classifierReducer', () => {
 
   it('deleteImageAction', () => {
     const state: Classifier = {
-      categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: '#FFFFFF',
-            visible: true
-          }
-        }
-      ],
+      categories: [unknownCategory],
       images: [
         {
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
@@ -763,17 +623,7 @@ describe('classifierReducer', () => {
     const reducer = classifierReducer(state, action);
 
     const expected: Classifier = {
-      categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: '#FFFFFF',
-            visible: true
-          }
-        }
-      ],
+      categories: [unknownCategory],
       images: [],
       name: 'Untitled classifier'
     };
@@ -784,15 +634,7 @@ describe('classifierReducer', () => {
   it('toggleCategoryVisibilityAction', () => {
     const state: Classifier = {
       categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        },
+        unknownCategory,
         {
           description: 'example',
           identifier: '11111111-1111-1111-1111-11111111111',
@@ -817,15 +659,7 @@ describe('classifierReducer', () => {
 
     const expected: Classifier = {
       categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        },
+        unknownCategory,
         {
           description: 'example',
           identifier: '11111111-1111-1111-1111-11111111111',
@@ -846,15 +680,7 @@ describe('classifierReducer', () => {
   it('updateCategoryColorAction', () => {
     const state: Classifier = {
       categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        },
+        unknownCategory,
         {
           description: 'example',
           identifier: '11111111-1111-1111-1111-11111111111',
@@ -880,15 +706,7 @@ describe('classifierReducer', () => {
 
     const expected: Classifier = {
       categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        },
+        unknownCategory,
         {
           description: 'example',
           identifier: '11111111-1111-1111-1111-11111111111',
@@ -909,15 +727,7 @@ describe('classifierReducer', () => {
   it('updateCategoryDescriptionAction', () => {
     const state: Classifier = {
       categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        },
+        unknownCategory,
         {
           description: 'example',
           identifier: '11111111-1111-1111-1111-11111111111',
@@ -943,15 +753,7 @@ describe('classifierReducer', () => {
 
     const expected: Classifier = {
       categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        },
+        unknownCategory,
         {
           description: 'updated',
           identifier: '11111111-1111-1111-1111-11111111111',
@@ -972,15 +774,7 @@ describe('classifierReducer', () => {
   it('updateCategoryVisibilityAction', () => {
     const state: Classifier = {
       categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        },
+        unknownCategory,
         {
           description: 'example',
           identifier: '11111111-1111-1111-1111-11111111111',
@@ -1006,15 +800,7 @@ describe('classifierReducer', () => {
 
     const expected: Classifier = {
       categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        },
+        unknownCategory,
         {
           description: 'example',
           identifier: '11111111-1111-1111-1111-11111111111',
@@ -1034,17 +820,7 @@ describe('classifierReducer', () => {
 
   it('updateClassifierNameAction', () => {
     const state: Classifier = {
-      categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        }
-      ],
+      categories: [unknownCategory],
       images: [],
       name: 'Untitled classifier'
     };
@@ -1058,17 +834,7 @@ describe('classifierReducer', () => {
     const reducer = classifierReducer(state, action);
 
     const expected: Classifier = {
-      categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        }
-      ],
+      categories: [unknownCategory],
       images: [],
       name: 'updated'
     };
@@ -1078,17 +844,7 @@ describe('classifierReducer', () => {
 
   it('updateImageBrightnessAction', () => {
     const state: Classifier = {
-      categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        }
-      ],
+      categories: [unknownCategory],
       images: [
         {
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
@@ -1118,17 +874,7 @@ describe('classifierReducer', () => {
     const reducer = classifierReducer(state, action);
 
     const expected: Classifier = {
-      categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        }
-      ],
+      categories: [unknownCategory],
       images: [
         {
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
@@ -1154,15 +900,7 @@ describe('classifierReducer', () => {
   it('updateImageCategoryAction', () => {
     const state: Classifier = {
       categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        },
+        unknownCategory,
         {
           description: 'example',
           identifier: '11111111-1111-1111-1111-11111111111',
@@ -1203,15 +941,7 @@ describe('classifierReducer', () => {
 
     const expected: Classifier = {
       categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        },
+        unknownCategory,
         {
           description: 'example',
           identifier: '11111111-1111-1111-1111-11111111111',
@@ -1247,15 +977,7 @@ describe('classifierReducer', () => {
   it('updateImagesCategoryAction', () => {
     const state: Classifier = {
       categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        },
+        unknownCategory,
         {
           description: 'example',
           identifier: '11111111-1111-1111-1111-11111111111',
@@ -1328,15 +1050,7 @@ describe('classifierReducer', () => {
 
     const expected: Classifier = {
       categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        },
+        unknownCategory,
         {
           description: 'example',
           identifier: '11111111-1111-1111-1111-11111111111',
@@ -1399,17 +1113,7 @@ describe('classifierReducer', () => {
 
   it('updateImageContrastAction', () => {
     const state: Classifier = {
-      categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        }
-      ],
+      categories: [unknownCategory],
       images: [
         {
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
@@ -1439,17 +1143,7 @@ describe('classifierReducer', () => {
     const reducer = classifierReducer(state, action);
 
     const expected: Classifier = {
-      categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        }
-      ],
+      categories: [unknownCategory],
       images: [
         {
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
@@ -1474,17 +1168,7 @@ describe('classifierReducer', () => {
 
   it('updateImageVisibilityAction', () => {
     const state: Classifier = {
-      categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        }
-      ],
+      categories: [unknownCategory],
       images: [
         {
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
@@ -1514,17 +1198,7 @@ describe('classifierReducer', () => {
     const reducer = classifierReducer(state, action);
 
     const expected: Classifier = {
-      categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        }
-      ],
+      categories: [unknownCategory],
       images: [
         {
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
@@ -1549,17 +1223,7 @@ describe('classifierReducer', () => {
 
   it('updateImagesPartitionAction', () => {
     const state: Classifier = {
-      categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        }
-      ],
+      categories: [unknownCategory],
       images: [
         {
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
@@ -1614,17 +1278,7 @@ describe('classifierReducer', () => {
     const reducer = classifierReducer(state, action);
 
     const expected: Classifier = {
-      categories: [
-        {
-          description: 'Unknown',
-          identifier: '00000000-0000-0000-0000-000000000000',
-          index: 0,
-          visualization: {
-            color: 'rgb(233, 165, 177)',
-            visible: true
-          }
-        }
-      ],
+      categories: [unknownCategory],
       images: [
         {
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',

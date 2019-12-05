@@ -1,6 +1,4 @@
-import {
-  createReducer
-} from 'redux-starter-kit';
+import { createReducer } from 'redux-starter-kit';
 
 import {
   createCategoryAction,
@@ -22,13 +20,9 @@ import {
   updateImageContrastAction,
   updateImageVisibilityAction,
   updateImagesPartitionAction
-} from "../actions";
+} from '../actions';
 
-import {
-  Category,
-  Classifier,
-  Image
-} from "@piximi/types";
+import { Category, Classifier, Image } from '@piximi/types';
 
 const findCategoryIndex = (
   categories: Category[],
@@ -95,7 +89,7 @@ export const classifierReducer = createReducer(initialState, {
   [createImagesAction.toString()]: (state, action) => {
     const { images } = action.payload;
 
-    images.forEach( (image: Image) => state.images.push(image));
+    images.forEach((image: Image) => state.images.push(image));
   },
   [createImagesScoreAction.toString()]: (state, action) => {
     const { identifiers, scores } = action.payload;
@@ -189,7 +183,7 @@ export const classifierReducer = createReducer(initialState, {
   [updateImagesCategoryAction.toString()]: (state, action) => {
     const { identifiers, categoryIdentifier } = action.payload;
 
-    identifiers.forEach( (identifier: string) => {
+    identifiers.forEach((identifier: string) => {
       const index: number = findImageIndex(state.images, identifier);
       const image: Image = state.images[index];
       image.categoryIdentifier = categoryIdentifier;
@@ -218,9 +212,9 @@ export const classifierReducer = createReducer(initialState, {
   [updateImagesPartitionAction.toString()]: (state, action) => {
     const { partitions } = action.payload;
 
-    state.images.forEach( (image: Image) => {
+    state.images.forEach((image: Image) => {
       image.partition = partitions[0];
       partitions.splice(0, 1);
-    })
+    });
   }
 });

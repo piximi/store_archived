@@ -3,20 +3,17 @@ import { persistReducer, persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
 import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2';
 import localforage from 'localforage';
-import axios from 'axios';
 import {
-  AnyAction,
   configureStore,
   EnhancedStore,
   Middleware,
   StoreEnhancer
 } from 'redux-starter-kit';
+import { reducer } from '..';
 
-import { reducer } from '../reducers';
+const enhancers: Array<StoreEnhancer> = [];
 
-const enhancers: StoreEnhancer[] = [];
-
-const middleware: Middleware<{}, any>[] = [logger, thunk];
+const middleware: Array<Middleware> = [logger, thunk];
 
 const preloadedState = {};
 
@@ -41,26 +38,6 @@ const options = {
   reducer: persistedReducer
 };
 
-export const store: EnhancedStore<any, AnyAction> = configureStore(options);
-
-const fetchExample = (name: string) => {
-  return axios
-    .get('https://storage.piximi.app/examples/' + name + '.piximi')
-    .then((result: any) => {
-      return {
-        ...preloadedState,
-        categories: result.data.categories,
-        images: result.data.images
-      };
-    })
-    .catch(function(error: Error) {
-      alert(error);
-    });
-};
-
-export const test: EnhancedStore<any, AnyAction> = configureStore({
-  ...options,
-  preloadedState: fetchExample('mnist')
-});
+export const store: EnhancedStore = configureStore(options);
 
 export const persistor = persistStore(store);

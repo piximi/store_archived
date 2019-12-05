@@ -18,19 +18,11 @@ import {
   updateImageContrastAction,
   updateImageVisibilityAction,
   updateImagesPartitionAction
-} from "../actions";
+} from '../actions';
 
-import {
-  classifierReducer
-} from './classifier';
+import { classifierReducer } from './classifier';
 
-import {
-  Category,
-  Classifier,
-  Image,
-  Partition,
-  Score
-} from "@piximi/types";
+import { Category, Classifier, Image, Partition, Score } from '@piximi/types';
 
 describe('classifierReducer', () => {
   it('createCategoryAction', () => {
@@ -168,21 +160,21 @@ describe('classifierReducer', () => {
             visible: true
           }
         },
-        {           
-          description: "1",
-          identifier: "18be6295-dade-445e-a13f-e9f2268ac8e6",
+        {
+          description: '1',
+          identifier: '18be6295-dade-445e-a13f-e9f2268ac8e6',
           index: 0,
           visualization: {
             color: '#9c27b0',
             visible: true
           }
         },
-        {           
-          description: "0",
-          identifier: "789f08ed-fe80-4785-bdf6-0e7108ec29a3",
+        {
+          description: '0',
+          identifier: '789f08ed-fe80-4785-bdf6-0e7108ec29a3',
           index: 0,
           visualization: {
-            color: "#00e676",
+            color: '#00e676',
             visible: true
           }
         }
@@ -221,21 +213,21 @@ describe('classifierReducer', () => {
             visible: true
           }
         },
-        {           
-          description: "1",
-          identifier: "18be6295-dade-445e-a13f-e9f2268ac8e6",
+        {
+          description: '1',
+          identifier: '18be6295-dade-445e-a13f-e9f2268ac8e6',
           index: 0,
           visualization: {
             color: '#9c27b0',
             visible: true
           }
         },
-        {           
-          description: "0",
-          identifier: "789f08ed-fe80-4785-bdf6-0e7108ec29a3",
+        {
+          description: '0',
+          identifier: '789f08ed-fe80-4785-bdf6-0e7108ec29a3',
           index: 0,
           visualization: {
-            color: "#00e676",
+            color: '#00e676',
             visible: true
           }
         }
@@ -470,7 +462,6 @@ describe('classifierReducer', () => {
     expect(reducer).toEqual(expected);
   });
 
-
   it('createImageScoreAction', () => {
     const state: Classifier = {
       categories: [
@@ -541,18 +532,25 @@ describe('classifierReducer', () => {
     };
 
     const scores: Score[][] = [
-      [{
-      categoryIdentifier: '11111111-1111-1111-1111-11111111111',
-      probability: 0.8
-      }],
-      [{
-        categoryIdentifier: '11111111-1111-1111-1111-11111111111',
-        probability: 0.3
-      }]
+      [
+        {
+          categoryIdentifier: '11111111-1111-1111-1111-11111111111',
+          probability: 0.8
+        }
+      ],
+      [
+        {
+          categoryIdentifier: '11111111-1111-1111-1111-11111111111',
+          probability: 0.3
+        }
+      ]
     ];
 
     const payload = {
-      identifiers: ['22222222-2222-2222-2222-22222222222','22222222-2222-2222-3333-22222222222'],
+      identifiers: [
+        '22222222-2222-2222-2222-22222222222',
+        '22222222-2222-2222-3333-22222222222'
+      ],
       scores: scores
     };
 
@@ -602,10 +600,12 @@ describe('classifierReducer', () => {
           data: '',
           identifier: '22222222-2222-2222-2222-22222222222',
           partition: Partition.Training,
-          scores: [ {
-            categoryIdentifier: '11111111-1111-1111-1111-11111111111',
-            probability: 0.8
-            }],
+          scores: [
+            {
+              categoryIdentifier: '11111111-1111-1111-1111-11111111111',
+              probability: 0.8
+            }
+          ],
           visualization: {
             brightness: 0,
             contrast: 0,
@@ -619,10 +619,12 @@ describe('classifierReducer', () => {
           data: '',
           identifier: '22222222-2222-2222-3333-22222222222',
           partition: Partition.Training,
-          scores: [{
-            categoryIdentifier: '11111111-1111-1111-1111-11111111111',
-            probability: 0.3
-          }],
+          scores: [
+            {
+              categoryIdentifier: '11111111-1111-1111-1111-11111111111',
+              probability: 0.3
+            }
+          ],
           visualization: {
             brightness: 0,
             contrast: 0,
@@ -1014,7 +1016,6 @@ describe('classifierReducer', () => {
           }
         },
         {
-          
           description: 'example',
           identifier: '11111111-1111-1111-1111-11111111111',
           index: 1,
@@ -1313,7 +1314,11 @@ describe('classifierReducer', () => {
     };
 
     const payload = {
-      identifiers: ['22222222-2222-2222-1111-22222222222', '22222222-2222-2222-2222-22222222222', '22222222-2222-2222-3333-22222222222'],
+      identifiers: [
+        '22222222-2222-2222-1111-22222222222',
+        '22222222-2222-2222-2222-22222222222',
+        '22222222-2222-2222-3333-22222222222'
+      ],
       categoryIdentifier: '11111111-1111-1111-1111-11111111111'
     };
 
@@ -1602,7 +1607,7 @@ describe('classifierReducer', () => {
       name: 'Untitled classifier'
     };
 
-    const payload = { partitions: [0,1,2]};
+    const payload = { partitions: [0, 1, 2] };
 
     const action = updateImagesPartitionAction(payload);
 

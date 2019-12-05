@@ -1,4 +1,4 @@
-import {
+export {
   createCategoryAction,
   createImageAction,
   createImagesAction,
@@ -20,28 +20,6 @@ import {
   updateImagesPartitionAction
 } from './actions';
 
-import { persistor, store } from './store/store';
+export { reducer } from './reducer';
 
-export {
-  createCategoryAction,
-  createClassifierAction,
-  createImageAction,
-  createImagesAction,
-  createImagesScoreAction,
-  deleteCategoryAction,
-  deleteImageAction,
-  openClassifierAction,
-  persistor,
-  store,
-  toggleCategoryVisibilityAction,
-  updateCategoryColorAction,
-  updateCategoryDescriptionAction,
-  updateCategoryVisibilityAction,
-  updateClassifierNameAction,
-  updateImageBrightnessAction,
-  updateImageCategoryAction,
-  updateImagesCategoryAction,
-  updateImageContrastAction,
-  updateImageVisibilityAction,
-  updateImagesPartitionAction
-};
+export { persistor, store } from './store';

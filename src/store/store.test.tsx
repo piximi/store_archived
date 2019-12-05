@@ -1,4 +1,4 @@
-import { store, test } from './store';
+import { store } from './store';
 
 describe('store', () => {
   it('test', () => {

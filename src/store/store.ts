@@ -1,7 +1,7 @@
 import logger from 'redux-logger';
 import { persistReducer, persistStore } from 'redux-persist';
-import thunk from 'redux-thunk';
 import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2';
+import thunk from 'redux-thunk';
 import localforage from 'localforage';
 import {
   configureStore,
@@ -9,7 +9,7 @@ import {
   Middleware,
   StoreEnhancer
 } from 'redux-starter-kit';
-import { reducer } from '..';
+import { combinedReducers } from '..';
 
 const enhancers: Array<StoreEnhancer> = [];
 
@@ -28,7 +28,7 @@ const persistConfig = {
   stateReconciler: autoMergeLevel2
 };
 
-const persistedReducer = persistReducer(persistConfig, reducer);
+const persistedReducer = persistReducer(persistConfig, combinedReducers);
 
 const options = {
   devTools: process.env.NODE_ENV !== 'production',

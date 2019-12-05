@@ -1,25 +1,23 @@
 export {
   createCategoryAction,
+  createClassifierAction,
   createImageAction,
   createImagesAction,
   createImagesScoreAction,
-  createClassifierAction,
-  deleteImageAction,
   deleteCategoryAction,
+  deleteImageAction,
   openClassifierAction,
   toggleCategoryVisibilityAction,
-  updateImageContrastAction,
-  updateImageBrightnessAction,
   updateCategoryColorAction,
   updateCategoryDescriptionAction,
   updateCategoryVisibilityAction,
   updateClassifierNameAction,
+  updateImageBrightnessAction,
   updateImageCategoryAction,
-  updateImagesCategoryAction,
+  updateImageContrastAction,
   updateImageVisibilityAction,
+  updateImagesCategoryAction,
   updateImagesPartitionAction
 } from './actions';
-
-export { reducer } from './reducer';
-
+export { combinedReducers } from './reducer';
 export { persistor, store } from './store';

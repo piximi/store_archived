@@ -1,14 +1,13 @@
 import { createReducer } from 'redux-starter-kit';
-
 import {
   createCategoryAction,
   createClassifierAction,
-  openClassifierAction,
   createImageAction,
   createImagesAction,
   createImagesScoreAction,
   deleteCategoryAction,
   deleteImageAction,
+  openClassifierAction,
   toggleCategoryVisibilityAction,
   updateCategoryColorAction,
   updateCategoryDescriptionAction,
@@ -16,12 +15,11 @@ import {
   updateClassifierNameAction,
   updateImageBrightnessAction,
   updateImageCategoryAction,
-  updateImagesCategoryAction,
   updateImageContrastAction,
-  updateImageVisibilityAction,
-  updateImagesPartitionAction
+  updateImagesCategoryAction,
+  updateImagesPartitionAction,
+  updateImageVisibilityAction
 } from '../actions';
-
 import { Category, Classifier, Image } from '@piximi/types';
 
 const findCategoryIndex = (

@@ -10,6 +10,14 @@ import {
   StoreEnhancer
 } from '@reduxjs/toolkit';
 import { combinedReducers } from '..';
+import * as React from 'react';
+import * as ReactRedux from 'react-redux';
+
+const ClassifierContext = React.createContext(null);
+
+// export const useDispatch = ReactRedux.createDispatchHook(ClassifierContext);
+// export const useSelector = ReactRedux.createSelectorHook(ClassifierContext);
+// export const useStore = ReactRedux.createStoreHook(ClassifierContext);
 
 const enhancers: Array<StoreEnhancer> = [];
 

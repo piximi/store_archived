@@ -3,7 +3,7 @@ import { ActionType, getType } from 'typesafe-actions';
 import * as actions from '../actions';
 
 const findCategoryIndex = (
-  categories: Category[],
+  categories: Array<Category>,
   identifier: string
 ): number => {
   return categories.findIndex(
@@ -11,7 +11,7 @@ const findCategoryIndex = (
   );
 };
 
-const findImageIndex = (images: Image[], identifier: string): number => {
+const findImageIndex = (images: Array<Image>, identifier: string): number => {
   return images.findIndex((image: Image) => image.identifier === identifier);
 };
 
